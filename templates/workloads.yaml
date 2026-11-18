@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: {{ $name }}
-          image: "{{ $.Values.registry }}/{{ $svc.image }}:{{ $.Values.tag }}"
+          image: "{{ $.Values.registry }}/{{ $svc.image }}:{{ $svc.tag | default $.Values.tag }}"
           imagePullPolicy: Always
           ports:
             - containerPort: {{ $svc.port }}
